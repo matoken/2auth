@@ -3,7 +3,7 @@
 AUTHFILE="${HOME}/fuse/encfs/.2auths"
 
 if [ ! -f ${AUTHFILE} ]; then
-  encfs -i 1 -o ro ~/ownCloud/Documents/encfs ~/fuse/encfs
+  echo `zenity --password` | encfs -S -i 1 -o ro ~/ownCloud/Documents/encfs ~/fuse/encfs
 #  echo "RET : $?"
   if [ $? != 0 ]; then
     echo "EncFs mount error."
