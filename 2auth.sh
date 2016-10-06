@@ -1,18 +1,16 @@
 #!/bin/sh
 
-AUTHFILE="${HOME}/fuse/encfs/.2auths"
+ENCFS_DIR="${HOME}/ownCloud/Documents/encfs"
+ENCFS_MOUNT="${HOME}/fuse/encfs"
+AUTHFILE="${ENCFS_MOUNT}/.2auths"
 
 if [ ! -f ${AUTHFILE} ]; then
-  echo `zenity --password` | encfs -S -i 1 -o ro ~/ownCloud/Documents/encfs ~/fuse/encfs
-#  echo "RET : $?"
+  echo `zenity --password` | encfs -S -i 1 -o ro ${ENCFS_DIR} ${ENCFS_MOUNT}
   if [ $? != 0 ]; then
     echo "EncFs mount error."
     notify-send -i /usr/share/icons/gnome/32x32/status/dialog-error.png "EncFs mount error."
     exit 1
   fi
-  echo "EncFs mount!"
-else
-  echo "EncFs ok."
 fi
 
 cat ${AUTHFILE} | while read LINE
