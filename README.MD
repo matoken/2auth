@@ -3,6 +3,10 @@
 * EncFSを確認してmountしていなかったらmount
 * athtoolでTOTPを計算してnotify-sendでデスクトップ通知
 
+# 必要なpkg
+
+`encfs libnotify-bin zenity`
+
 
 # ISSUE
 
