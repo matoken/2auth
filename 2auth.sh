@@ -17,7 +17,7 @@ cat ${AUTHFILE} | while read LINE
 do
   OIFS="${IFS}"; IFS=','
   set -- ${LINE}; IFS="${OIFS}"
-  TOTP=`oathtool --totp -b ${2}`
+  TOTP=`oathtool --totp -b "${2}"`
   echo "${1} : ${TOTP}"
   notify-send -t 10000 -i /usr/share/icons/gnome/32x32/status/dialog-password.png ${1} "<span size=\"x-large\"><b>${TOTP}</b></span>"
 done
