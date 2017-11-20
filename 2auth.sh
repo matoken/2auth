@@ -14,7 +14,7 @@ if [ ! -f ${AUTHFILE} ]; then
   fi
 fi
 
-cat ${AUTHFILE} | while read LINE
+cat ${AUTHFILE} | grep -v ^# | while read LINE
 do
   OIFS="${IFS}"; IFS=','
   set -- ${LINE}; IFS="${OIFS}"
